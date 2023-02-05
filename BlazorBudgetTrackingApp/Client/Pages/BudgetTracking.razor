@@ -1,0 +1,37 @@
+﻿@page "/budgets"
+
+<h2>Budget Tracker</h2>
+<AddTransaction transaction="AddTranscationCallBack" />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in transactions)
+        {
+            <tr>
+                <td>@transaction.DateTransaction.ToShortDateString()</td>
+                <td>@transaction.Desription</td>
+                <td>@transaction.Amount</td>
+                <td>@transaction.Category</td>
+                <td>
+                    <button class="btn btn-danger" @onclick="() => RemoveTransaction(transaction)">Remove</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2"></td>
+            <td colspan="2">Total:</td>
+            <td>@total</td>
+        </tr>
+    </tfoot>
+</table>
